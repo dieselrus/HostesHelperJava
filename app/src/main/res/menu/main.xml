@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/menu_search"          
+        android:icon="@drawable/btn_search"                   
+        android:showAsAction="always|withText">
+           
+    </item>
+    <item android:id="@+id/menu_update"          
+        android:icon="@drawable/btn_update"                   
+        android:showAsAction="always|withText" />
+    <item android:id="@+id/menu_menu"          
+        android:icon="@drawable/btn_menu"                   
+        android:showAsAction="always|withText">
+	    <menu>           
+            <item android:id="@+id/save"
+                  android:title="submenu1" />
+            <item android:id="@+id/open"
+                  android:title="submenu2" />
+            <item android:id="@+id/settings"
+                  android:title="Settings"/>
+        </menu> 
+  	</item>        
+</menu>

@@ -1,0 +1,200 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/RL"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg"
+    tools:context=".MainActivity" >
+
+    <TableLayout 
+        android:id="@+id/TableView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true" >
+
+        <TableRow
+            android:id="@+id/tableRow1"
+            android:layout_width="fill_parent"  
+		    android:layout_height="1dp"  
+    		android:layout_weight="0.1" >
+
+            <ImageView
+                android:id="@+id/imageView1"
+                android:layout_width="1dp"
+                android:layout_height="fill_parent"
+                android:layout_gravity="right"
+                android:layout_weight="0.3"
+                android:onClick="onClick"
+                android:paddingBottom="5dp"
+                android:paddingRight="5dp"
+                android:paddingTop="5dp"
+                android:scaleType="fitEnd"
+                android:src="@drawable/ic_launcher"
+                android:tag="1" />
+
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="1dp"
+                android:layout_height="fill_parent"
+                android:layout_gravity="left"
+                android:layout_weight="0.3"
+                android:onClick="onClick"
+                android:paddingBottom="5dp"
+                android:paddingLeft="5dp"
+                android:paddingTop="5dp"
+                android:scaleType="fitStart"
+                android:src="@drawable/ic_launcher"
+                android:tag="2" />
+
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/tableRow2"
+            android:layout_width="fill_parent"  
+		    android:layout_height="1dp"  
+    		android:layout_weight="0.1">
+            
+            <ImageView
+                android:id="@+id/imageView3"
+                android:layout_width="1dp"
+                android:layout_height="fill_parent"
+                android:layout_gravity="right"
+                android:layout_weight="0.3"
+                android:onClick="onClick"
+                android:paddingBottom="5dp"
+                android:paddingRight="5dp"
+                android:paddingTop="5dp"
+                android:scaleType="fitEnd"
+                android:src="@drawable/ic_launcher"
+                android:tag="3" />
+
+            <ImageView
+                android:id="@+id/imageView4"
+                android:layout_width="1dp"
+                android:layout_height="fill_parent"
+                android:layout_gravity="left"
+                android:layout_weight="0.3"
+                android:onClick="onClick"
+                android:paddingBottom="5dp"
+                android:paddingLeft="5dp"
+                android:paddingTop="5dp"
+                android:scaleType="fitStart"
+                android:src="@drawable/ic_launcher"
+                android:tag="4" />
+            
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/tableRow3"
+            android:layout_width="fill_parent"  
+		    android:layout_height="1dp"  
+    		android:layout_weight="0.1">
+            
+            <ImageView
+                android:id="@+id/imageView5"
+                android:layout_width="1dp"
+                android:layout_height="fill_parent"
+                android:layout_gravity="right"
+                android:layout_weight="0.3"
+                android:onClick="onClick"
+                android:paddingBottom="5dp"
+                android:paddingRight="5dp"
+                android:paddingTop="5dp"
+                android:scaleType="fitEnd"
+                android:src="@drawable/ic_launcher"
+                android:tag="5" />
+
+            <ImageView
+                android:id="@+id/imageView6"
+                android:layout_width="1dp"
+                android:layout_height="fill_parent"
+                android:layout_gravity="left"
+                android:layout_weight="0.3"
+                android:onClick="onClick"
+                android:paddingBottom="5dp"
+                android:paddingLeft="5dp"
+                android:paddingTop="5dp"
+                android:scaleType="fitStart"
+                android:src="@drawable/ic_launcher"
+                android:tag="6" />
+            
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/tableRow4"
+            android:layout_width="fill_parent"  
+		    android:layout_height="1dp"  
+    		android:layout_weight="0.1">
+            
+            <ImageView
+                android:id="@+id/imageView7"
+                android:layout_width="1dp"
+                android:layout_height="fill_parent"
+                android:layout_gravity="right"
+                android:layout_weight="0.3"
+                android:onClick="onClick"
+                android:paddingBottom="5dp"
+                android:paddingRight="5dp"
+                android:paddingTop="5dp"
+                android:scaleType="fitEnd"
+                android:src="@drawable/ic_launcher"
+                android:tag="7" />
+
+            <ImageView
+                android:id="@+id/imageView8"
+                android:layout_width="1dp"
+                android:layout_height="fill_parent"
+                android:layout_gravity="left"
+                android:layout_weight="0.3"
+                android:onClick="onClick"
+                android:paddingBottom="5dp"
+                android:paddingLeft="5dp"
+                android:paddingTop="5dp"
+                android:scaleType="fitStart"
+                android:src="@drawable/ic_launcher"
+                android:tag="8" />
+            
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/tableRow5"
+            android:layout_width="fill_parent"  
+		    android:layout_height="1dp"  
+    		android:layout_weight="0.1">
+            
+            <ImageView
+                android:id="@+id/imageView9"
+                android:layout_width="1dp"
+                android:layout_height="fill_parent"
+                android:layout_gravity="right"
+                android:layout_weight="0.3"
+                android:onClick="onClick"
+                android:paddingBottom="5dp"
+                android:paddingRight="5dp"
+                android:paddingTop="5dp"
+                android:scaleType="fitEnd"
+                android:src="@drawable/ic_launcher"
+                android:tag="9" />
+
+            <ImageView
+                android:id="@+id/imageView10"
+                android:layout_width="1dp"
+                android:layout_height="fill_parent"
+                android:layout_gravity="left"
+                android:layout_weight="0.3"
+                android:onClick="onClick"
+                android:paddingBottom="5dp"
+                android:paddingLeft="5dp"
+                android:paddingTop="5dp"
+                android:scaleType="fitStart"
+                android:src="@drawable/ic_launcher"
+                android:tag="10" />
+            
+        </TableRow>
+
+    </TableLayout>
+
+</RelativeLayout>

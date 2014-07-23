@@ -1,0 +1,26 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    
+	<EditTextPreference
+		 android:key="ServerAddress"
+		 android:summary="Настройки подключения к серверу."
+		 android:title="IP адрес сервера MySQL">
+	</EditTextPreference>
+	<EditTextPreference
+		 android:key="ServerPort"
+		 android:summary="Настройки подключения к серверу."
+		 android:title="Порт MySQL">
+	</EditTextPreference>
+    <EditTextPreference
+        android:key="ServerUser"
+        android:summary="Настройки подключения к серверу."
+        android:title="Пользователь MySQL">
+    </EditTextPreference>
+    <EditTextPreference
+        android:key="ServerPasswd"
+        android:inputType="textPassword"
+        android:summary="Настройки подключения к серверу."
+        android:title="Пароль MySQL">
+    </EditTextPreference>
+</PreferenceScreen>
