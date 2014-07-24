@@ -525,7 +525,7 @@ public class MyActivity extends Activity implements ActionBar.TabListener{
             super.onPreExecute();
 
             pDialog = new ProgressDialog(MyActivity.this);
-            pDialog.setMessage("Загрузка продуктов. Подождите...");
+            pDialog.setMessage("Получение данных.\n Подождите...");
             pDialog.setIndeterminate(false);
             pDialog.setCancelable(false);
             pDialog.show();
