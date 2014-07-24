@@ -185,8 +185,11 @@ public class MyActivity extends Activity implements ActionBar.TabListener{
         if(_addressMySQL == "" || _userMySQL == "" || _passwdMySQL == "") {
             Toast.makeText(getBaseContext(), "Не заполнены параметры подключения к серверу.", Toast.LENGTH_SHORT).show();
         }
-        else {
+        else if (isOnline()) {
             new ConnectorMySQL().execute(_addressMySQL, _portMySQL, "HostesHelper", _userMySQL, _passwdMySQL, "SELECT  `room` ,  `table` ,  `guests` ,  `reserved`,  `busy` FROM  `table_status`;");
+        }
+        else {
+            Toast.makeText(getBaseContext(), "Вы не подключены к сети.", Toast.LENGTH_SHORT).show();
         }
 
     }
@@ -371,8 +374,11 @@ public class MyActivity extends Activity implements ActionBar.TabListener{
                 if(_addressMySQL == "" || _userMySQL == "" || _passwdMySQL == "") {
                     Toast.makeText(getBaseContext(), "Не заполнены параметры подключения к серверу.", Toast.LENGTH_SHORT).show();
                 }
-                else {
+                else if (isOnline()) {
                     new ConnectorMySQL().execute(_addressMySQL, _portMySQL, "HostesHelper", _userMySQL, _passwdMySQL, "SELECT  `room` ,  `table` ,  `guests` ,  `reserved`,  `busy` FROM  `table_status`;");
+                }
+                else {
+                    Toast.makeText(getBaseContext(), "Вы не подключены к сети.", Toast.LENGTH_SHORT).show();
                 }
                 return true;
             default:
@@ -513,8 +519,11 @@ public class MyActivity extends Activity implements ActionBar.TabListener{
         protected void onPostExecute(ResultSet result) {
             // закрываем прогресс диалог после получение все продуктов
             pDialog.dismiss();
-            setResultSQL(result);
-
+            if(result == null){
+                Toast.makeText(getBaseContext(), "Cервер вернул пустые данные. Возможно он не доступен.", Toast.LENGTH_SHORT).show();
+            } else {
+                setResultSQL(result);
+            }
         }
     }
 }
