@@ -11,7 +11,10 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import android.app.FragmentTransaction;
+import android.content.Context;
 import android.graphics.drawable.Drawable;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -50,6 +53,20 @@ public class MyActivity extends Activity implements ActionBar.TabListener{
     private ProgressDialog pDialog;
 
     private SharedPreferences sp;
+
+    // Определяем подключены ли к интернету
+    public boolean isOnline() {
+        ConnectivityManager cm = (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo nInfo = cm.getActiveNetworkInfo();
+        if (nInfo != null && nInfo.isConnected()) {
+            // Log.i(LOG_TAG, "ONLINE");
+            return true;
+        }
+        else {
+            // Log.i(LOG_TAG, "OFFLINE");
+            return false;
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
