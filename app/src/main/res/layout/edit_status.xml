@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rl1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg"
+    android:onClick="onClick"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/tvRoom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:onClick="onClick"
+        android:tag="1"
+        android:text="@string/room"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="#ffffff"
+        android:textSize="70sp" />
+
+    <TextView
+        android:id="@+id/tvTable"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/tvRoom"
+        android:onClick="onClick"
+        android:tag="2"
+        android:text="@string/table"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="#ffffff"
+        android:textSize="60sp" />
+
+		<Switch
+		    android:id="@+id/swStatus"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:layout_alignParentLeft="true"
+		    android:layout_alignParentRight="true"
+		    android:layout_below="@+id/tvTable"
+            android:layout_marginTop="24dp"
+		    android:text="@string/status"
+		    android:textColor="@color/fontWhite"
+		    android:textOff="@string/swich_off"
+		    android:textOn="@string/swich_on"
+		    android:textSize="50sp"
+            android:checked="false" />
+
+		<ListView
+		    android:id="@+id/listEdit"
+		    android:layout_width="fill_parent"
+		    android:layout_height="wrap_content"
+		    android:layout_below="@+id/chbReserved"
+		    android:background="@drawable/bg" >
+
+		</ListView>
+
+		<CheckBox
+		    android:id="@+id/chbReserved"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:layout_alignBottom="@+id/tvReserv"
+		    android:layout_alignParentRight="true"
+            android:layout_alignTop="@+id/textView4"
+		    android:textSize="30sp"
+            android:checked="false" />
+
+		<TextView
+		    android:id="@+id/textView2"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:layout_alignParentLeft="true"
+		    android:layout_alignParentRight="true"
+		    android:layout_below="@+id/swStatus"
+		    android:text="@string/status_comment"
+		    android:textAppearance="?android:attr/textAppearanceLarge"
+		    android:textColor="@color/fontColor1"
+		    android:textSize="33sp" />
+
+		<TextView
+		    android:id="@+id/tvReserv"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:layout_alignParentLeft="true"
+		    android:layout_below="@+id/textView2"
+		    android:layout_toLeftOf="@+id/chbReserved"
+            android:layout_marginTop="29dp"
+		    android:text="@string/reserv"
+		    android:textAppearance="?android:attr/textAppearanceLarge"
+		    android:textColor="@color/fontWhite"
+		    android:textSize="43sp" />
+
+</RelativeLayout>

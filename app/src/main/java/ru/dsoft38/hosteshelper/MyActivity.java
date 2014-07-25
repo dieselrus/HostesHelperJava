@@ -216,8 +216,11 @@ public class MyActivity extends Activity implements ActionBar.TabListener{
         @Override
         public boolean onLongClick(View v) {
             // Toast.makeText(getBaseContext(), "Long Clicked Button1.", Toast.LENGTH_SHORT).show();
-            //Intent intent = new Intent(MainActivity.this, EditStatus.class);
-            //startActivity(intent);
+            roomNum = viewPager.getCurrentItem() + 1;
+            tableNum = Integer.valueOf((String) v.getTag());
+
+            Intent intent = new Intent(MyActivity.this, EditStatus.class);
+            startActivity(intent);
             return true;
         }
     };
@@ -225,13 +228,11 @@ public class MyActivity extends Activity implements ActionBar.TabListener{
 
     // Обработка нажатия
     public void onClick(View v){
-        Toast.makeText(getApplicationContext(), "Click view id " + v.getId() + " " + viewPager.getCurrentItem(), Toast.LENGTH_SHORT).show();
+        //Toast.makeText(getApplicationContext(), "Click view id " + v.getId() + " " + viewPager.getCurrentItem(), Toast.LENGTH_SHORT).show();
         //Toast.makeText(getApplicationContext(), "Click", Toast.LENGTH_SHORT).show();
         roomNum = viewPager.getCurrentItem() + 1;
         //tableNum = (int) v.getTag();
         tableNum = Integer.valueOf((String) v.getTag());
-
-        //sendData("|ReadTableData|" + roomNum + "-"+ tableNum + "|\n");
 
         Intent intent = new Intent(MyActivity.this, ViewStatus.class);
         startActivity(intent);
@@ -383,7 +384,7 @@ public class MyActivity extends Activity implements ActionBar.TabListener{
         // Handle item selection
         switch (item.getItemId()) {
             case R.id.settings:
-//	        Log.i("LOG", "Settings");
+            // Log.i("LOG", "Settings");
                 Intent intent = new Intent(MyActivity.this, PrefActivity.class);
                 startActivity(intent);
                 return true;
@@ -416,6 +417,22 @@ public class MyActivity extends Activity implements ActionBar.TabListener{
     @Override
     public void onTabReselected(Tab tab, FragmentTransaction ft) {
 
+    }
+
+    public static String getAddressMySQL(){
+        return  _addressMySQL;
+    }
+
+    public static String getpasswdMySQL(){
+        return  _passwdMySQL;
+    }
+
+    public static String getPortMySQL(){
+        return  _portMySQL;
+    }
+
+    public static String getUserMySQL(){
+        return  _userMySQL;
     }
 
     public void setResultSQL(ResultSet res){
@@ -506,9 +523,7 @@ public class MyActivity extends Activity implements ActionBar.TabListener{
                 Statement st = conexionMySQL.createStatement();
                 String sql = arg[5];
                 rs = st.executeQuery(sql);
-                //rs.next();
-                //str_res = rs.getString(1);
-                //System.out.print(str_res);
+                conexionMySQL.close();
 
             } catch (Exception e) {
                 System.out.println("Error" + e.getMessage());

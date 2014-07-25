@@ -7,7 +7,7 @@
     <string name="room">"Зал № "</string>
     <string name="table">"Столик № "</string>
     <string name="status">Статус</string>
-    <string name="status_comment">O - свободен/ I - занят</string>
+    <string name="status_comment">I - занят / O - свободен</string>
     <string name="reserv">Резервирование</string>
     <string name="reserv_comment">Large Text</string>
     <color name="switsh_off">#f90202</color>

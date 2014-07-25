@@ -3,12 +3,19 @@ package ru.dsoft38.hosteshelper;
 import android.app.ActionBar;
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.Typeface;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.CheckBox;
+import android.widget.ListView;
 import android.widget.RelativeLayout;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,9 +30,34 @@ public class ViewStatus extends Activity {
     Typeface helv4light;
     TextView tv;
 
+    public  String _addressMySQL = "";
+    public  String _portMySQL = "3306";
+    public  String _userMySQL = "";
+    public  String _passwdMySQL = "";
+
+    public String[] names = {};
+
+    public Switch swBusy;
+    public CheckBox chbReserved;
+    public ListView lv;
+
+    public ArrayAdapter<String> adapter;
+
     private ProgressDialog pDialog;
 
-    private SharedPreferences sp;
+    // Определяем подключены ли к интернету
+    private boolean isOnline() {
+        ConnectivityManager cm = (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo nInfo = cm.getActiveNetworkInfo();
+        if (nInfo != null && nInfo.isConnected()) {
+            // Log.i(LOG_TAG, "ONLINE");
+            return true;
+        }
+        else {
+            // Log.i(LOG_TAG, "OFFLINE");
+            return false;
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,12 +82,38 @@ public class ViewStatus extends Activity {
         tvTable.setTypeface(helv3thin);
         tvTable.setText(getString(R.string.table) + MyActivity.tableNum);
 
+        swBusy = (Switch) findViewById(R.id.swStatus);
+        chbReserved = (CheckBox) findViewById(R.id.chbReserved);
+
+        // получаем экземпляр элемента ListView
+        lv = (ListView)findViewById(R.id.listEdit);
+        // создаем адаптер
+        adapter = new ArrayAdapter<String>(this, R.layout.my_list_item, names);
+
+        lv.setAdapter(adapter);
+
         ActionBar actionBar = getActionBar();
 //	    actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
         actionBar.setDisplayShowTitleEnabled(true);
         actionBar.hide();
 //	    actionBar.setTitle(getString(R.string.room) + _room);
 
+        _addressMySQL = MyActivity.getAddressMySQL();
+        _portMySQL = MyActivity.getPortMySQL();
+        _userMySQL = MyActivity.getUserMySQL();
+        _passwdMySQL = MyActivity.getpasswdMySQL();
+
+        if( _addressMySQL == "" || _userMySQL == "" || _passwdMySQL == "") {
+            Toast.makeText(getBaseContext(), "Не заполнены параметры подключения к серверу.", Toast.LENGTH_SHORT).show();
+        }
+        else if (isOnline()) {
+            new ConnectorMySQL().execute(_addressMySQL, _portMySQL, "HostesHelper", _userMySQL, _passwdMySQL, "SELECT table_status.guests, table_status.reserved, table_status.busy, garcon.name \n" +
+                    "FROM table_status, garcon\n" +
+                    "WHERE table_status.room = " + MyActivity.roomNum + " AND table_status.table = " + MyActivity.tableNum + " AND table_status.garcon_id = garcon.id;");
+        }
+        else {
+            Toast.makeText(getBaseContext(), "Вы не подключены к сети.", Toast.LENGTH_SHORT).show();
+        }
     }
 
     public void onClick(View v) {
@@ -66,7 +124,14 @@ public class ViewStatus extends Activity {
         try {
             while (res.next())
             {
+                //int _guests = res.getInt(1);
+                chbReserved.setChecked(res.getBoolean(2));
+                swBusy.setChecked(!res.getBoolean(3));
 
+                names = new String[1];
+                names[0] = res.getString(4);
+                adapter = new ArrayAdapter<String>(this, R.layout.my_list_item, names);
+                lv.setAdapter(adapter);
             }
         } catch (SQLException e) {
             System.out.println("Error: " + e.getMessage());
@@ -88,9 +153,7 @@ public class ViewStatus extends Activity {
                 Statement st = conexionMySQL.createStatement();
                 String sql = arg[5];
                 rs = st.executeQuery(sql);
-                //rs.next();
-                //str_res = rs.getString(1);
-                //System.out.print(str_res);
+                conexionMySQL.close();
 
             } catch (Exception e) {
                 System.out.println("Error" + e.getMessage());
