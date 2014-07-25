@@ -118,7 +118,7 @@ public class EditStatus extends Activity {
         // получаем экземпляр элемента ListView
         lv = (ListView)findViewById(R.id.listEdit);
 		// создаем адаптер    
-		adapter = new ArrayAdapter<String>(this,  R.layout.my_list_item, names);
+		adapter = new ArrayAdapter<String>(this,  R.layout.edit_list_item, R.id.TopText, names);
 		
 		lv.setAdapter(adapter);
 
@@ -257,7 +257,7 @@ public class EditStatus extends Activity {
 
                 names = new String[1];
                 names[0] = res.getString(4);
-                adapter = new ArrayAdapter<String>(this, R.layout.my_list_item, names);
+                adapter = new ArrayAdapter<String>(this, R.layout.edit_list_item, R.id.TopText, names);
                 lv.setAdapter(adapter);
             }
         } catch (SQLException e) {

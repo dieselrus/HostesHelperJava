@@ -5,7 +5,8 @@
     android:layout_height="match_parent"
     android:background="@drawable/bg"
     android:onClick="onClick"
-    android:orientation="vertical" >
+    android:orientation="vertical"
+    android:padding="15dp">
 
     <TextView
         android:id="@+id/tvRoom"
@@ -19,7 +20,7 @@
         android:text="@string/room"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textColor="#ffffff"
-        android:textSize="70sp" />
+        android:textSize="50sp" />
 
     <TextView
         android:id="@+id/tvTable"
@@ -33,31 +34,21 @@
         android:text="@string/table"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textColor="#ffffff"
-        android:textSize="60sp" />
+        android:textSize="50sp" />
 
-		<Switch
-		    android:id="@+id/swStatus"
-		    android:layout_width="wrap_content"
-		    android:layout_height="wrap_content"
-		    android:layout_alignParentLeft="true"
-		    android:layout_alignParentRight="true"
-		    android:layout_below="@+id/tvTable"
-            android:layout_marginTop="24dp"
-		    android:text="@string/status"
-		    android:textColor="@color/fontWhite"
-		    android:textOff="@string/swich_off"
-		    android:textOn="@string/swich_on"
-		    android:textSize="50sp"
-            android:checked="false" />
-
-		<ListView
-		    android:id="@+id/listEdit"
-		    android:layout_width="fill_parent"
-		    android:layout_height="wrap_content"
-		    android:layout_below="@+id/chbReserved"
-		    android:background="@drawable/bg" >
-
-		</ListView>
+	<Switch
+		android:id="@+id/swStatus"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_alignParentLeft="true"
+	    android:layout_alignParentRight="true"
+	    android:layout_below="@+id/tvTable"
+        android:text="@string/status"
+	    android:textColor="@color/fontWhite"
+	    android:textOff="@string/swich_off"
+	    android:textOn="@string/swich_on"
+	    android:textSize="30sp"
+        android:checked="false" />
 
 		<CheckBox
 		    android:id="@+id/chbReserved"
@@ -70,7 +61,7 @@
             android:checked="false" />
 
 		<TextView
-		    android:id="@+id/textView2"
+		    android:id="@+id/BottomText"
 		    android:layout_width="wrap_content"
 		    android:layout_height="wrap_content"
 		    android:layout_alignParentLeft="true"
@@ -79,19 +70,61 @@
 		    android:text="@string/status_comment"
 		    android:textAppearance="?android:attr/textAppearanceLarge"
 		    android:textColor="@color/fontColor1"
-		    android:textSize="33sp" />
+		    android:textSize="20sp" />
 
 		<TextView
 		    android:id="@+id/tvReserv"
 		    android:layout_width="wrap_content"
 		    android:layout_height="wrap_content"
 		    android:layout_alignParentLeft="true"
-		    android:layout_below="@+id/textView2"
+		    android:layout_below="@+id/BottomText"
 		    android:layout_toLeftOf="@+id/chbReserved"
-            android:layout_marginTop="29dp"
-		    android:text="@string/reserv"
+            android:text="@string/reserv"
 		    android:textAppearance="?android:attr/textAppearanceLarge"
 		    android:textColor="@color/fontWhite"
-		    android:textSize="43sp" />
+		    android:textSize="30sp" />
 
+    <ListView
+        android:id="@+id/listEdit"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/chbReserved"
+        android:background="@drawable/bg"
+        android:layout_alignParentEnd="false"
+        android:layout_above="@+id/TableView">
+
+    </ListView>
+
+    <TableLayout
+        android:id="@+id/TableView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true">
+
+        <TableRow
+            android:id="@+id/tableRow1"
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:layout_weight="0.1" >
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_weight="0.3"
+                android:layout_height="wrap_content"
+                android:text="New Button"
+                android:id="@+id/button3"/>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_weight="0.3"
+                android:layout_height="wrap_content"
+                android:text="New Button"
+                android:id="@+id/button4" />
+
+        </TableRow>
+
+    </TableLayout>
 </RelativeLayout>
+
